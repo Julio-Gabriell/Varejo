@@ -7,13 +7,14 @@
 @endsection
 
 @section('content')
-<div>
+<div id="login-container" class="w-[full] min-h-[90dvh] m-0 flex items-center  flex-col gap-2 font-inter">
+  <div class="flex items-center justify-center flex-col mb-[50px]">
     <div>
         <img src="{{ asset('Assets/Imagens/Rectangle.png') }}" height="190" width="190" class="" alt="Logo Varejo 2 irmãos"/>   
     </div>
     <div>
-    <h3>
-        Entre na sua conta!
+    <h3 class="text-[24px] font-bold text-verde-claro ">
+        Entre em sua conta!
     </h3>
     </div>
 </div>
@@ -21,8 +22,9 @@
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
-    <label for="email" class="">{{ __('Email') }}</label>
     <div class="">
+      <label for="email" class="">{{ __('Email') }}</label>
+      <div>
         <input id="email" type="email" class=" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
         @error('email')
@@ -30,6 +32,7 @@
                 <strong>{{ $message }}</strong>
             </span>
         @enderror
+        </div>
     </div>
 
     <div class="">
@@ -45,44 +48,52 @@
         </div>
     </div>
 
-    <div class="">
-        <div class="">
-            <div class="">
-                <input class="" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+    <div class="self-start">
+      <input class="" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                <label class="" for="remember">
-                    {{ __('Lembre de mim') }}
-                </label>
-            </div>
-        </div>
+      <label class="" for="remember">
+          {{ __('Lembre de mim') }}
+      </label>
     </div>
 
     <div class="">
-        <div class="">
-            <button type="submit" class="">
-                {{ __('Login') }}
-            </button>
+        <button type="submit" class="">
+            {{ __('ENTRAR') }}
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
+    </div>
+  </form>
 
-            @if (Route::has('password.request'))
-                <a class="" href="{{ route('password.request') }}">
-                    {{ __('Esqueceu sua Senha?') }}
-                </a>
-            @endif
-        </div>
-        <div class="">
-            <a class="" href="{{ route('register') }}">
-                {{ __('Ainda não possui uma conta? Cadastre-se!') }}
+  <div class="w-[90%] md:w-[60%] lg:w-[50%] xl:w-[35%] h-auto my-2.5">
+    <div class="flex flex-col gap-2">
+      @if (Route::has('password.request'))
+            <a class="text-verde-escuro underline decoration-solid" href="{{ route('password.request') }}">
+                {{ __('Esqueceu sua Senha?') }}
             </a>
-        </div>
+        @endif
+        <a class="text-laranja underline decoration-solid" href="{{ route('register') }}">
+            {{ __('Ainda não possui uma conta? Cadastre-se!') }}
+        </a>
     </div>
-</form>
+  </div>
 
-<a href="{{ url('/auth/google/redirect') }}">
-  <button style="border:1px solid #ccc; border-radius:6px; padding:10px 20px; display:flex; align-items:center; gap:10px;">
-    <img src="https://developers.google.com/identity/images/g-logo.png" style="width:20px;height:20px;">
-    Conectar com Google
-  </button>
-</a>
+  <div class="w-[90%] md:w-[60%] lg:w-[50%] xl:w-[35%] flex items-center justify-center relative my-5">
+    <hr class="w-full h-[2px]">
+    <span class="text-black/50 font-black text-xl bg-white px-2 absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] z-30">OU</span>
+  </div>
+
+  <div class="w-[90%] md:w-[60%] lg:w-[50%] xl:w-[35%]">
+    <a href="{{ url('/auth/google/redirect') }}">
+      <button class="w-full h-[40px] flex items-center justify-center gap-2 border-1 border-black rounded-[10px] shadow-md hover:bg-gray-100 duration-200 hover:cursor-pointer">
+        <img src="https://developers.google.com/identity/images/g-logo.png" style="width:20px;height:20px;">
+        Conectar com Google
+      </button>
+    </a>
+  </div>
+
+
+
+</div>
 
 
 @endsection
