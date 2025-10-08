@@ -45,6 +45,19 @@ Route::get('/auth/google/callback', function () {
     return redirect('/home');
 });
 
+// Só acessível para cargo "admin"
+// Route::get('/dashboard', function () {
+//     return 'Bem-vindo, Admin!';
+// })->middleware('cargo:admin,gerente');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/performance', [App\Http\Controllers\PerformanceController::class, 'index'])->name('performance');
+
+Route::get('/produtos', [App\Http\Controllers\ProdutosController::class, 'index'])->name('produtos');
+Route::get('/produtos/form', [App\Http\Controllers\ProdutosController::class, 'CriarProduto'])->name('produtos.criar')->middleware('cargo:admin,gerente');
+
+Route::get('/fornecedores', [App\Http\Controllers\FornecedorController::class, 'index'])->name('fornecedor');
+Route::get('/fornecedores/form', [App\Http\Controllers\FornecedorController::class, 'CriarFornecedor'])->name('fornecedor.criar')->middleware('cargo:admin,gerente');
