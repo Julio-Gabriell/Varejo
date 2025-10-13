@@ -7,17 +7,17 @@
 @endsection
 
 @section('content')
-<div id="login-container" class="w-[full] min-h-[90dvh] m-0 flex items-center  flex-col gap-2 font-inter">
+<div id="login-container" class="w-[full] min-h-[90dvh] m-0 flex items-center justify-center flex-col gap-2 font-inter">
   <div class="flex items-center justify-center flex-col mb-[50px]">
     <div>
-        <img src="{{ asset('Assets/Imagens/Rectangle.png') }}" height="190" width="190" class="" alt="Logo Varejo 2 irmãos"/>   
+        <img src="{{ asset('Assets/Imagens/logoNova.png') }}" height="190" width="190" class="" alt="Logo Varejo 2 irmãos"/>   
     </div>
     <div>
     <h3 class="text-[24px] font-bold text-verde-claro ">
         Entre em sua conta!
     </h3>
     </div>
-</div>
+  </div>
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
@@ -84,7 +84,7 @@
 
   <div class="w-[90%] md:w-[60%] lg:w-[50%] xl:w-[35%]">
     <a href="{{ url('/auth/google/redirect') }}">
-      <button class="w-full h-[40px] flex items-center justify-center gap-2 border-1 border-black rounded-[10px] shadow-md hover:bg-gray-100 duration-200 hover:cursor-pointer">
+      <button class="btn-google">
         <img src="https://developers.google.com/identity/images/g-logo.png" style="width:20px;height:20px;">
         Conectar com Google
       </button>
