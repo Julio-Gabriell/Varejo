@@ -9,7 +9,6 @@ return new class extends Migration {
         Schema::create('produtos', function (Blueprint $table) {
             $table->id('idproduto');
             $table->string('nome', 100);
-            $table->decimal('valorvenda', 10, 2);
             $table->decimal('valorcompra', 10, 2);
             $table->float('precokg');
             $table->timestamps();
