@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Produto;
 class ProdutosController extends Controller
 {
     /**
@@ -26,8 +26,15 @@ class ProdutosController extends Controller
         return view('produtos');
     }
 
-    public function CriarProduto()
+    public function ViewCriarProduto()
     {
         return view('produtosForm');
+    }
+
+    public function CriarProduto(Request $request)
+    {
+        $produto = Produto::create($request->all());
+
+        return view('home');
     }
 }

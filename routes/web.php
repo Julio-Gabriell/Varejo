@@ -57,7 +57,8 @@ Route::get('/produtos', [App\Http\Controllers\ProdutosController::class, 'index'
 Route::get('/fornecedores', [App\Http\Controllers\FornecedorController::class, 'index'])->name('fornecedor');
 
 Route::middleware('cargo:adm,gerente')->group(function () {
-    Route::get('/produtos/form', [App\Http\Controllers\ProdutosController::class, 'CriarProduto'])->name('produtos.criar');
+    Route::get('/produtos/form', [App\Http\Controllers\ProdutosController::class, 'ViewCriarProduto'])->name('produtos.form');
+    Route::post('/produtos/criar', [App\Http\Controllers\ProdutosController::class, 'CriarProduto'])->name('produtos.criar');
 
     Route::get('/fornecedores/form', [App\Http\Controllers\FornecedorController::class, 'CriarFornecedor'])->name('fornecedor.criar');
 });
