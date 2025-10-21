@@ -1,23 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Fornecedores') }}</div>
+    <h1>
+        Fonecedores
+    </h1>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+    @foreach ($fornecedores as $fornecedor)
+        <p>
+            Nome: {{ $fornecedor->nome }}
+        </p>
+        <p>
+            Cnpj: {{ $fornecedor->CNPJ }}
+        </p>
+        <p>
+            Telefone: {{ $fornecedor->telefone }}
+        </p>
+    @endforeach
 
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    <a href="{{ route('home') }}">Home</a>
 @endsection

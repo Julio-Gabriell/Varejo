@@ -60,5 +60,6 @@ Route::middleware('cargo:adm,gerente')->group(function () {
     Route::get('/produtos/form', [App\Http\Controllers\ProdutosController::class, 'ViewCriarProduto'])->name('produtos.form');
     Route::post('/produtos/criar', [App\Http\Controllers\ProdutosController::class, 'CriarProduto'])->name('produtos.criar');
 
-    Route::get('/fornecedores/form', [App\Http\Controllers\FornecedorController::class, 'CriarFornecedor'])->name('fornecedor.criar');
+    Route::get('/fornecedores/form', [App\Http\Controllers\FornecedorController::class, 'ViewCriarFornecedor'])->name('fornecedor.form');
+    Route::post('/fornecedores/criar', [App\Http\Controllers\FornecedorController::class, 'CriarFornecedor'])->name('fornecedor.criar');
 });

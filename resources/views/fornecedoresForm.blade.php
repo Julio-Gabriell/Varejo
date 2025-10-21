@@ -1,23 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Fornecedores Form') }}</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+    <h1>
+        Novo Fornecedor
+    </h1>
 
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $erro)
+                <li>{{ $erro }}</li>
+            @endforeach
+        </ul>
     </div>
-</div>
+    @endif
+
+    <form action="{{ route('fornecedor.criar') }}" method="post" enctype="multipart/form-data">
+        @csrf
+        
+        <label for="nomeFornecedor">Nome do fornecedor:</label>
+        <input type="text" id="nomeFornecedor" name="nome">
+
+        <label for="cnjpFornecedor">Cnpj do fornecedor:</label>
+        <input type="number" step="0.01" id="cnpjFornecedor" name="cnpj">
+
+        <label for="telefoneFornecedor">Telefone do fornecedor:</label>
+        <input type="tel" id="telefoneFornecedor" name="telefone">
+
+        <button type="submit">Cadastrar</button>
+    </form>
 @endsection
