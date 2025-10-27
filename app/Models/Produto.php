@@ -9,5 +9,9 @@ class Produto extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome', 'valorcompra', 'precokg'];
+    protected $primaryKey = 'idproduto';
+    public $incrementing = true;
+    protected $keyType = 'int';
+
+    protected $fillable = ['path', 'estoque', 'nome', 'valorcompra', 'precokg'];
 }
