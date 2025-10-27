@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProdutoRequest;
 use Illuminate\Http\Request;
 use App\Models\Produto;
 class ProdutosController extends Controller
@@ -33,10 +34,49 @@ class ProdutosController extends Controller
         return view('produtosForm');
     }
 
-    public function CriarProduto(Request $request)
+    public function CriarProduto(ProdutoRequest $request)
     {
-        $produto = Produto::create($request->all());
+        $pathImagem = $this->uploadImagem($request);
 
-        return view('home');
+        $produto = Produto::create([
+            ...$request->validated(),
+            'path' => $pathImagem,
+        ]);
+
+        return redirect()->route('home');
+    }
+
+    private function uploadImagem($request)
+    {
+        if ($request->hasFile('path') && $request->file('path')->isValid()) {
+            return $request->file('path')->store('uploads', 'public');
+        }
+
+        return 'uploads/default.png';
+    }
+
+    public function VierEditarProduto($id)
+    {
+        $produto = Produto::findOrFail($id);
+
+        return view('produtosFormEdit', compact('produto'));
+    }
+
+    public function EditarProduto(ProdutoRequest $request, $id)
+    {
+        $produto = Produto::findOrFail($id);
+
+        $produto->update(
+            $request->validated()
+        );
+
+        return redirect()->route('home');
+    }
+
+    public function deletar($id)
+    {
+        Produto::destroy($id);
+
+        return redirect()->route('home');
     }
 }
