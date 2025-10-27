@@ -15,24 +15,25 @@
     </div>
     @endif
 
-    <form action="{{ route('produtos.criar') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('produtos.editar', $produto->idproduto) }}" method="post" enctype="multipart/form-data">
        @csrf
+       @method('PUT')
 
        <label for="imgProduto">Imagem do produto:</label>
-       <input type="file" id="imgProduto" name="path">
+       <input type="file" id="imgProduto" name="img" value="{{ $produto->path }}">
 
        <label for="estoqueProduto">Valor de produtos em estoque:</label>
-       <input type="number" step="1" id="estoqueProduto" name="estoque">
+       <input type="number" step="1" id="estoqueProduto" name="estoque" value="{{ $produto->estoque }}">
        
        <label for="nomeProduto">Nome do produto:</label>
-       <input type="text" id="nomeProduto" name="nome">
+       <input type="text" id="nomeProduto" name="nome" value="{{ $produto->nome }}">
 
        <label for="valorCompra">Valor de compra do produto:</label>
-       <input type="number" step="0.01" id="valorCompra" name="valorcompra">
+       <input type="number" step="0.01" id="valorCompra" name="valorcompra" value="{{ $produto->valorcompra }}">
 
        <label for="precoProduto">Preço do Kg do produto:</label>
-       <input type="number" step="0.01" id="precoProduto" name="precokg">
+       <input type="number" step="0.01" id="precoProduto" name="precokg" value="{{ $produto->precokg }}">
 
-       <button type="submit">Cadastrar</button>
+       <button type="submit">Editar</button>
     </form>
 @endsection
