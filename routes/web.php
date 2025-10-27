@@ -59,6 +59,9 @@ Route::get('/fornecedores', [App\Http\Controllers\FornecedorController::class, '
 Route::middleware('cargo:adm,gerente')->group(function () {
     Route::get('/produtos/form', [App\Http\Controllers\ProdutosController::class, 'ViewCriarProduto'])->name('produtos.form');
     Route::post('/produtos/criar', [App\Http\Controllers\ProdutosController::class, 'CriarProduto'])->name('produtos.criar');
+    Route::get('/produtos/{id}/formeditar', [App\Http\Controllers\ProdutosController::class, 'VierEditarProduto'])->name('produtos.formEditar');
+    Route::put('/produtos/{id}/editar', [App\Http\Controllers\ProdutosController::class, 'EditarProduto'])->name('produtos.editar');
+    Route::delete('produtos/{id}/deletar', [App\Http\Controllers\ProdutosController::class, 'deletar'])->name('produtos.deletar');
 
     Route::get('/fornecedores/form', [App\Http\Controllers\FornecedorController::class, 'ViewCriarFornecedor'])->name('fornecedor.form');
     Route::post('/fornecedores/criar', [App\Http\Controllers\FornecedorController::class, 'CriarFornecedor'])->name('fornecedor.criar');
