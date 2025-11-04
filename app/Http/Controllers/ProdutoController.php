@@ -5,36 +5,32 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProdutoRequest;
 use Illuminate\Http\Request;
 use App\Models\Produto;
-class ProdutosController extends Controller
+
+class ProdutoController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * Display a listing of the resource.
      */
     public function index()
     {
         $produtos = Produto::all();
 
         return view('produtos', compact('produtos'));
+
     }
 
-    public function ViewCriarProduto()
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
     {
         return view('produtosForm');
     }
 
-    public function CriarProduto(ProdutoRequest $request)
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(ProdutoRequest $request)
     {
         $pathImagem = $this->uploadImagem($request);
 
@@ -45,7 +41,6 @@ class ProdutosController extends Controller
 
         return redirect()->route('home');
     }
-
     private function uploadImagem($request)
     {
         if ($request->hasFile('path') && $request->file('path')->isValid()) {
@@ -55,14 +50,28 @@ class ProdutosController extends Controller
         return 'uploads/default.png';
     }
 
-    public function VierEditarProduto($id)
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
     {
         $produto = Produto::findOrFail($id);
 
         return view('produtosFormEdit', compact('produto'));
     }
 
-    public function EditarProduto(ProdutoRequest $request, $id)
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(ProdutoRequest $request, string $id)
     {
         $produto = Produto::findOrFail($id);
 
@@ -73,7 +82,10 @@ class ProdutosController extends Controller
         return redirect()->route('home');
     }
 
-    public function deletar($id)
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
     {
         Produto::destroy($id);
 
