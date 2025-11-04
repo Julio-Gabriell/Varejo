@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FornecedorRequest;
 use App\Models\Fornecedor;
 use Illuminate\Http\Request;
 
@@ -33,9 +34,11 @@ class FornecedorController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $fornecedor = Fornecedor::create($request->all());
+    public function store(FornecedorRequest $request) 
+    {    
+        $fornecedor = Fornecedor::create (
+            $request->validated()
+        );
 
         return view('home');
     }
@@ -53,15 +56,23 @@ class FornecedorController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $fornecedor = Fornecedor::findOrFail($id);
+
+        return view('fornecedoresFormEdit', compact('fornecedor'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(FornecedorRequest $request, string $id)
     {
-        //
+        $fornecedor = Fornecedor::findOrFail($id);
+
+        $fornecedor->update(
+            $request->validated()
+        );
+
+        return redirect()->route('home');
     }
 
     /**
@@ -69,6 +80,8 @@ class FornecedorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Fornecedor::destroy($id);
+
+        return redirect()->route('home');
     }
 }

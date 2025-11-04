@@ -3,7 +3,7 @@
 @section('content')
 
     <h1>
-        Novo Fornecedor
+        Edit Fornecedor
     </h1>
 
     @if ($errors->any())
@@ -16,17 +16,18 @@
     </div>
     @endif
 
-    <form action="{{ route('fornecedor.criar') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('fornecedor.editar', $fornecedor->idfornecedor) }}" method="post" enctype="multipart/form-data">
         @csrf
-        
+        @method('PUT')
+
         <label for="nomeFornecedor">Nome do fornecedor:</label>
-        <input type="text" id="nomeFornecedor" name="nome">
+        <input type="text" id="nomeFornecedor" name="nome" value="{{ $fornecedor->nome }}">
 
         <label for="cnjpFornecedor">Cnpj do fornecedor:</label>
-        <input type="number" step="0.01" id="cnpjFornecedor" name="cnpj">
+        <input type="number" step="0.01" id="cnpjFornecedor" name="cnpj" value="{{ $fornecedor->CNPJ }}">
 
         <label for="telefoneFornecedor">Telefone do fornecedor:</label>
-        <input type="tel" id="telefoneFornecedor" name="telefone">
+        <input type="tel" id="telefoneFornecedor" name="telefone" value="{{ $fornecedor->telefone }}">
 
         <button type="submit">Cadastrar</button>
     </form>

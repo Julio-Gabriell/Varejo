@@ -9,6 +9,10 @@ class Fornecedor extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'idfornecedor';
+    public $incrementing = true;
+    protected $keyType = 'int';
+
     protected $table = 'fornecedores';
     protected $fillable = ['nome', 'cnpj', 'telefone'];
 }

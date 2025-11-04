@@ -62,7 +62,10 @@ Route::middleware('cargo:adm,gerente')->group(function () {
     Route::get('/produtos/{id}/formeditar', [App\Http\Controllers\ProdutoController::class, 'edit'])->name('produtos.formEditar');
     Route::put('/produtos/{id}/editar', [App\Http\Controllers\ProdutoController::class, 'update'])->name('produtos.editar');
     Route::delete('produtos/{id}/deletar', [App\Http\Controllers\ProdutoController::class, 'destroy'])->name('produtos.deletar');
-
-    Route::get('/fornecedores/form', [App\Http\Controllers\FornecedorController::class, 'ViewCriarFornecedor'])->name('fornecedor.form');
-    Route::post('/fornecedores/criar', [App\Http\Controllers\FornecedorController::class, 'CriarFornecedor'])->name('fornecedor.criar');
+    
+    Route::get('/fornecedores/form', [App\Http\Controllers\FornecedorController::class, 'create'])->name('fornecedor.form');
+    Route::post('/fornecedores/criar', [App\Http\Controllers\FornecedorController::class, 'store'])->name('fornecedor.criar');
+    Route::get('/fornecedores/{id}/formeditar', [App\Http\Controllers\FornecedorController::class, 'edit'])->name('fornecedor.formEditar');
+    Route::put('/fornecedores/{id}/editar', [App\Http\Controllers\FornecedorController::class, 'update'])->name('fornecedor.editar');
+    Route::delete('fornecedores/{id}/deletar', [App\Http\Controllers\FornecedorController::class, 'destroy'])->name('fornecedor.deletar');
 });
