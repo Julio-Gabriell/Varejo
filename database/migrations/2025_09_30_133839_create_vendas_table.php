@@ -10,9 +10,19 @@ return new class extends Migration {
             $table->id('idvenda');
             $table->date('data');
             $table->float('precototal');
-             $table->foreignId('user_id')
-                  ->constrained('users')
-                  ->onDelete('cascade');
+            $table->decimal('subtotal', 10, 2)->nullable();
+            $table->integer('quantidade')->nullable();
+
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->onDelete('cascade');
+
+            $table->unsignedBigInteger('forma_pagamento_id')->nullable();
+            $table->foreign('forma_pagamento_id')
+                ->references('idforma_pagamento')
+                ->on('forma_pagamento')
+                ->nullOnDelete();
+
             $table->timestamps();
         });
     }
