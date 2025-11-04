@@ -23,7 +23,7 @@
         <label for="nomeFornecedor">Nome do fornecedor:</label>
         <input type="text" id="nomeFornecedor" name="nome" value="{{ $fornecedor->nome }}">
 
-        <label for="cnjpFornecedor">Cnpj do fornecedor:</label>
+        <label for="cnpjFornecedor">Cnpj do fornecedor:</label>
         <input type="number" step="0.01" id="cnpjFornecedor" name="cnpj" value="{{ $fornecedor->CNPJ }}">
 
         <label for="telefoneFornecedor">Telefone do fornecedor:</label>

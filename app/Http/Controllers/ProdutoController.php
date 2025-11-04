@@ -20,7 +20,7 @@ class ProdutoController extends Controller
     {
         $produtos = Produto::all();
 
-        return view('produtos', compact('produtos'));
+        return view('produtos.produtos', compact('produtos'));
 
     }
 
@@ -29,7 +29,7 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        return view('produtosForm');
+        return view('produtos.produtosForm');
     }
 
     /**
@@ -70,7 +70,7 @@ class ProdutoController extends Controller
     {
         $produto = Produto::findOrFail($id);
 
-        return view('produtosFormEdit', compact('produto'));
+        return view('produtos.produtosFormEdit', compact('produto'));
     }
 
     /**

@@ -20,7 +20,7 @@ class FornecedorController extends Controller
     {
         $fornecedores = Fornecedor::all();
 
-        return view('fornecedores', compact('fornecedores'));
+        return view('fornecedores.fornecedores', compact('fornecedores'));
     }
 
     /**
@@ -28,7 +28,7 @@ class FornecedorController extends Controller
      */
     public function create()
     {
-        return view('fornecedoresForm');
+        return view('fornecedores.fornecedoresForm');
     }
 
     /**
@@ -58,7 +58,7 @@ class FornecedorController extends Controller
     {
         $fornecedor = Fornecedor::findOrFail($id);
 
-        return view('fornecedoresFormEdit', compact('fornecedor'));
+        return view('fornecedores.fornecedoresFormEdit', compact('fornecedor'));
     }
 
     /**
