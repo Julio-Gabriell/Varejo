@@ -52,16 +52,16 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/performance', [App\Http\Controllers\PerformanceController::class, 'index'])->name('performance');
 
-Route::get('/produtos', [App\Http\Controllers\ProdutosController::class, 'index'])->name('produtos');
+Route::get('/produtos', [App\Http\Controllers\ProdutoController::class, 'index'])->name('produtos');
 
 Route::get('/fornecedores', [App\Http\Controllers\FornecedorController::class, 'index'])->name('fornecedor');
 
 Route::middleware('cargo:adm,gerente')->group(function () {
-    Route::get('/produtos/form', [App\Http\Controllers\ProdutosController::class, 'create'])->name('produtos.form');
-    Route::post('/produtos/criar', [App\Http\Controllers\ProdutosController::class, 'store'])->name('produtos.criar');
-    Route::get('/produtos/{id}/formeditar', [App\Http\Controllers\ProdutosController::class, 'edit'])->name('produtos.formEditar');
-    Route::put('/produtos/{id}/editar', [App\Http\Controllers\ProdutosController::class, 'update'])->name('produtos.editar');
-    Route::delete('produtos/{id}/deletar', [App\Http\Controllers\ProdutosController::class, 'destroy'])->name('produtos.deletar');
+    Route::get('/produtos/form', [App\Http\Controllers\ProdutoController::class, 'create'])->name('produtos.form');
+    Route::post('/produtos/criar', [App\Http\Controllers\ProdutoController::class, 'store'])->name('produtos.criar');
+    Route::get('/produtos/{id}/formeditar', [App\Http\Controllers\ProdutoController::class, 'edit'])->name('produtos.formEditar');
+    Route::put('/produtos/{id}/editar', [App\Http\Controllers\ProdutoController::class, 'update'])->name('produtos.editar');
+    Route::delete('produtos/{id}/deletar', [App\Http\Controllers\ProdutoController::class, 'destroy'])->name('produtos.deletar');
 
     Route::get('/fornecedores/form', [App\Http\Controllers\FornecedorController::class, 'ViewCriarFornecedor'])->name('fornecedor.form');
     Route::post('/fornecedores/criar', [App\Http\Controllers\FornecedorController::class, 'CriarFornecedor'])->name('fornecedor.criar');
