@@ -23,6 +23,7 @@
 
     <!-- Scripts -->
     @vite('resources/css/app.css')
+    @livewireStyles
 </head>
 <body>
     <div id="app">
@@ -30,5 +31,6 @@
             @yield('content')
         </main>
     </div>
+    @livewireScripts
 </body>
 </html>
