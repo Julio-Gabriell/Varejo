@@ -56,6 +56,13 @@ Route::get('/produtos', [App\Http\Controllers\ProdutoController::class, 'index']
 
 Route::get('/fornecedores', [App\Http\Controllers\FornecedorController::class, 'index'])->name('fornecedor');
 
+Route::get('/vendas', [App\Http\Controllers\VendaController::class, 'index'])->name('vendas');
+    Route::get('/vendas/form', [App\Http\Controllers\VendaController::class, 'create'])->name('vendas.form');
+Route::post('/vendas/criar', [App\Http\Controllers\VendaController::class, 'store'])->name('vendas.criar');
+Route::get('/vendas/{id}/formeditar', [App\Http\Controllers\VendaController::class, 'edit'])->name('vendas.formEditar');
+Route::put('/vendas/{id}/editar', [App\Http\Controllers\VendaController::class, 'update'])->name('vendas.editar');
+Route::delete('vendas/{id}/deletar', [App\Http\Controllers\VendaController::class, 'destroy'])->name('vendas.deletar');
+
 Route::middleware('cargo:adm,gerente')->group(function () {
     Route::get('/produtos/form', [App\Http\Controllers\ProdutoController::class, 'create'])->name('produtos.form');
     Route::post('/produtos/criar', [App\Http\Controllers\ProdutoController::class, 'store'])->name('produtos.criar');
