@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('title')
+    <title>
+        Produtos - Varejo
+    </title>
+@endsection
+
 @section('content')
     <h1>
         Produtos Cadastrados

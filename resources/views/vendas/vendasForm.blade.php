@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('title')
+    <title>
+        Nova Venda - Varejo
+    </title>
+@endsection
+
 @section('content')
     <a href="{{ Route('home') }}"><i class="fa-solid fa-arrow-left"></i></a>
     <h1>Nova venda</h1>

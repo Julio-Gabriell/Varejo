@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('title')
+    <title>
+        Novo fornecedor - Varejo
+    </title>
+@endsection
+
 @section('content')
 
     <h1>
