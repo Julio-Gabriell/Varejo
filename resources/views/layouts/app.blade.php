@@ -31,9 +31,25 @@
             <x-sidebar>
                 @yield('content')
             </x-sidebar>
-
         </main>
     </div>
     @livewireScripts
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const button = document.getElementById('userMenuButton');
+    const menu = document.getElementById('userDropdownMenu');
+
+    button.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+
+    // Fecha ao clicar fora
+    document.addEventListener('click', (e) => {
+      if (!button.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.add('hidden');
+      }
+    });
+  });
+</script>
 </body>
 </html>
