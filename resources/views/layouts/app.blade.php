@@ -27,8 +27,11 @@
 </head>
 <body>
     <div id="app">
-        <main class="py-4">
-            @yield('content')
+        <main>
+            <x-sidebar>
+                @yield('content')
+            </x-sidebar>
+
         </main>
     </div>
     @livewireScripts
