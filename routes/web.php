@@ -51,8 +51,7 @@ Auth::routes();
 |--------------------------------------------------------------------------
 */
 
-Route::get('/home',         [App\Http\Controllers\HomeController::class,       'index'])->name('home');
-Route::get('/performance',  [App\Http\Controllers\PerformanceController::class,'index'])->name('performance');
+Route::get('/performance',  [App\Http\Controllers\PerformanceController::class,'index'])->name('home');
 Route::get('/produtos',     [App\Http\Controllers\ProdutoController::class,    'index'])->name('produtos');
 Route::get('/fornecedores', [App\Http\Controllers\FornecedorController::class, 'index'])->name('fornecedor');
 Route::get('/vendas',       [App\Http\Controllers\VendaController::class,      'index'])->name('vendas');
