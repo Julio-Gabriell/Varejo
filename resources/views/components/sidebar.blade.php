@@ -7,9 +7,9 @@
         </div>
 
         <nav class="mt-4 space-y-1">
-          <a href="#"
+          <a href="{{ route('home') }}"
             class="flex items-center px-4 py-2 m-3 text-sm font-medium rounded-md
-            {{ request()->routeIs('performance') ? 'text-orange-600 bg-orange-100' : 'text-gray-700 hover:bg-gray-100' }}">
+            {{ request()->routeIs('home*') ? 'text-orange-600 bg-orange-100' : 'text-gray-700 hover:bg-gray-100' }}">
             <i class="fa-solid fa-chart-line mr-3"></i> Performance
           </a>
 
