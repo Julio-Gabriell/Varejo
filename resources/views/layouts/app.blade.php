@@ -36,20 +36,42 @@
     @livewireScripts
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const button = document.getElementById('userMenuButton');
-    const menu = document.getElementById('userDropdownMenu');
+      const button = document.getElementById('userMenuButton');
+      const menu = document.getElementById('userDropdownMenu');
+      const inputFile = document.getElementById('imgProduto');
+      const preview = document.getElementById('previewImagem');
+      const removerInput = document.getElementById('removerImagemInput');
+      const btnRemover = document.getElementById('btnRemoverImagem');
 
-    button.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
-    });
+      button.addEventListener('click', () => {
+          menu.classList.toggle('hidden');
+      });
 
-    // Fecha ao clicar fora
-    document.addEventListener('click', (e) => {
-      if (!button.contains(e.target) && !menu.contains(e.target)) {
-        menu.classList.add('hidden');
-      }
-    });
+      document.addEventListener('click', (e) => {
+          if (!button.contains(e.target) && !menu.contains(e.target)) {
+              menu.classList.add('hidden');
+          }
+      });
+
+      inputFile.addEventListener('change', (e) => {
+          const file = e.target.files[0];
+          if (!file) return;
+
+          const reader = new FileReader();
+          reader.onload = (ev) => {
+              preview.src = ev.target.result;
+              removerInput.value = "0";
+          };
+          reader.readAsDataURL(file);
+      });
+
+      btnRemover.addEventListener('click', () => {
+          preview.src = "/storage/uploads/default.png";
+          removerInput.value = "1";
+          inputFile.value = "";
+      });
   });
 </script>
+
 </body>
 </html>

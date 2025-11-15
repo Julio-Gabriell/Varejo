@@ -25,8 +25,32 @@
        @csrf
        @method('PUT')
 
-       <label for="imgProduto">Imagem do produto:</label>
-       <input type="file" id="imgProduto" name="img" value="{{ $produto->path }}">
+        <div class="mb-4">
+            <label class="font-semibold text-gray-700">Imagem do produto</label>
+
+            <div class="w-52 h-52 border border-orange-300 rounded-lg overflow-hidden bg-white mt-2 flex items-center justify-center">
+                <img id="previewImagem"
+                    src="{{ asset('storage/' . $produto->path) }}"
+                    alt="Imagem atual"
+                    class="object-cover w-full h-full">
+            </div>
+
+            <div class="flex gap-3 mt-3">
+                <label for="imgProduto"
+                    class="cursor-pointer bg-orange-500 hover:bg-orange-600 text-white text-sm px-4 py-2 rounded-md inline-flex items-center gap-2">
+                    <i class="fa-solid fa-upload"></i> Alterar
+                </label>
+
+                <button type="button"
+                    id="btnRemoverImagem"
+                    class="border border-orange-400 text-orange-600 hover:bg-orange-50 text-sm px-4 py-2 rounded-md inline-flex items-center gap-2">
+                    <i class="fa-solid fa-trash"></i> Remover
+                </button>
+            </div>
+
+            <input type="file" id="imgProduto" name="img" class="hidden" accept="image/*">
+            <input type="hidden" name="remover_imagem" id="removerImagemInput" value="0">
+        </div>
 
        <label for="estoqueProduto">Valor de produtos em estoque:</label>
        <input type="number" step="1" id="estoqueProduto" name="estoque" value="{{ $produto->estoque }}">

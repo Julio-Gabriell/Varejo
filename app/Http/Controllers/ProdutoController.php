@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProdutoRequest;
 use Illuminate\Http\Request;
 use App\Models\Produto;
+use Illuminate\Support\Facades\Storage;
 
 class ProdutoController extends Controller
 {
@@ -80,11 +81,32 @@ class ProdutoController extends Controller
     {
         $produto = Produto::findOrFail($id);
 
-        $produto->update(
-            $request->validated()
-        );
+        if ($request->remover_imagem == 1) {
+            if ($produto->path !== 'uploads/default.png') {
+                Storage::disk('public')->delete($produto->path);
+            }
+            $novoPath = 'uploads/default.png';
+        }
 
-        return redirect()->route('home');
+        elseif ($request->hasFile('img')) {
+
+            if ($produto->path !== 'uploads/default.png') {
+                Storage::disk('public')->delete($produto->path);
+            }
+
+            $novoPath = $request->file('img')->store('uploads', 'public');
+        }
+
+        else {
+            $novoPath = $produto->path;
+        }
+
+        $produto->update([
+            ...$request->validated(),
+            'path' => $novoPath
+        ]);
+
+        return redirect()->route('produtos');
     }
 
     /**
