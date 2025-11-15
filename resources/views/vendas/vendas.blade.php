@@ -7,6 +7,8 @@
 @endsection
 
 @section('content')
+<div class="p-6">
+    <a href="{{ Route('home') }}"><i class="fa-solid fa-arrow-left"></i></a>
     <div class="flex items-center justify-between mb-6">
         <h1 class="text-2xl font-bold text-gray-800">Vendas</h1>
         <a href="{{ route('vendas.form') }}"
@@ -14,4 +16,5 @@
             <i class="fa-solid fa-plus mr-2"></i> Nova venda
         </a>
     </div>
+</div>
 @endsection
