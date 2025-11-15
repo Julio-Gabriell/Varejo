@@ -40,7 +40,7 @@ class FornecedorController extends Controller
             $request->validated()
         );
 
-        return view('home');
+        return redirect()->route('fornecedor');
     }
 
     /**
