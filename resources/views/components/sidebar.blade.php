@@ -25,6 +25,12 @@
             <i class="fa-solid fa-cart-shopping mr-3"></i> Vendas
           </a>
 
+          <a href="{{ route('dividas') }}"
+            class="flex items-center px-4 py-2 m-3 text-sm rounded-md
+            {{ request()->routeIs('dividas*') ? 'text-orange-600 bg-orange-100 font-medium' : 'text-gray-700 hover:bg-gray-100' }}">
+            <i class="fa-solid fa-receipt mr-3"></i> Dívidas
+          </a>
+
           <a href="{{ route('fornecedor') }}"
             class="flex items-center px-4 py-2 m-3 text-sm rounded-md
             {{ request()->routeIs('fornecedor*') ? 'text-orange-600 bg-orange-100 font-medium' : 'text-gray-700 hover:bg-gray-100' }}">

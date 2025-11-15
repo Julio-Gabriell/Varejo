@@ -51,11 +51,24 @@ Auth::routes();
 |--------------------------------------------------------------------------
 */
 
-Route::get('/home',        [App\Http\Controllers\HomeController::class,       'index'])->name('home');
-Route::get('/performance', [App\Http\Controllers\PerformanceController::class,'index'])->name('performance');
-Route::get('/produtos',    [App\Http\Controllers\ProdutoController::class,    'index'])->name('produtos');
-Route::get('/fornecedores',[App\Http\Controllers\FornecedorController::class, 'index'])->name('fornecedor');
-Route::get('/vendas',      [App\Http\Controllers\VendaController::class,      'index'])->name('vendas');
+Route::get('/home',         [App\Http\Controllers\HomeController::class,       'index'])->name('home');
+Route::get('/performance',  [App\Http\Controllers\PerformanceController::class,'index'])->name('performance');
+Route::get('/produtos',     [App\Http\Controllers\ProdutoController::class,    'index'])->name('produtos');
+Route::get('/fornecedores', [App\Http\Controllers\FornecedorController::class, 'index'])->name('fornecedor');
+Route::get('/vendas',       [App\Http\Controllers\VendaController::class,      'index'])->name('vendas');
+Route::get('/dividas',      [App\Http\Controllers\DividaController::class,     'index'])->name('dividas');
+
+/*
+|----------------------------------------------------------------------
+| DÍVIDAS
+|----------------------------------------------------------------------
+*/
+
+    Route::get('/dividas/form',              [App\Http\Controllers\DividaController::class, 'create'])->name('divida.form');
+    Route::post('/dividas/criar',            [App\Http\Controllers\DividaController::class, 'store'])->name('divida.criar');
+    Route::get('/dividas/{id}/formeditar',   [App\Http\Controllers\DividaController::class, 'edit'])->name('divida.formEditar');
+    Route::put('/dividas/{id}/editar',       [App\Http\Controllers\DividaController::class, 'update'])->name('divida.editar');
+    Route::delete('dividas/{id}/deletar',    [App\Http\Controllers\DividaController::class, 'destroy'])->name('divida.deletar');
 
 
 /*
