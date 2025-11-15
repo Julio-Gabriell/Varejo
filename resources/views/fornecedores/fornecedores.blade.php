@@ -17,7 +17,7 @@
         </a>
     </div>
 
-    <div class="grid grid-cols-4 font-semibold text-gray-600 text-sm px-4 py-2">
+    <div class="grid grid-cols-4 font-semibold text-gray-600 text-sm px-4 py-2 my-2 border-b border-gray-300">
         <div>Nome fornecedor</div>
         <div>CNPJ/CPF</div>
         <div>Telefone</div>
@@ -25,7 +25,7 @@
     </div>
 
     @foreach ($fornecedores as $fornecedor)
-        <div class="bg-gray-200 rounded-xl p-4 shadow-sm mb-3 grid grid-cols-4 items-center text-sm">
+        <div class="bg-white rounded-xl p-4 shadow-sm mb-3 grid grid-cols-4 items-center text-sm">
 
             <div class="text-gray-800">
                 {{ $fornecedor->nome }}
