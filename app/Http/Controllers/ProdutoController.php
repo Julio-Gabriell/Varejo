@@ -44,7 +44,7 @@ class ProdutoController extends Controller
             'path' => $pathImagem,
         ]);
 
-        return redirect()->route('home');
+        return redirect()->route('produtos');
     }
     private function uploadImagem($request)
     {
