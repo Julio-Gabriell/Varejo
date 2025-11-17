@@ -39,7 +39,7 @@ Route::get('/auth/google/callback', function () {
 
     Auth::login($user);
 
-    return redirect('/home');
+    return redirect('/performance');
 });
 
 Auth::routes();
